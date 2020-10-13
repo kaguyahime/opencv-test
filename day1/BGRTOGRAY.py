@@ -8,6 +8,7 @@
 import cv2
 import numpy as np
 
+#手动设置了rgb通道的权重变为灰度图像
 def BGR_TO_GRAY_WAY1(img):
     b = img[:, :, 0].copy()
     g = img[:, :, 1].copy()
@@ -20,6 +21,8 @@ def BGR_TO_GRAY_WAY1(img):
 
 
     return out
+
+#使用API自动变为灰色图像
 
 def BGR_TO_GRAY_WAY2(img):
     out = img.astype(np.uint8)

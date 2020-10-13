@@ -7,6 +7,8 @@
 
 import cv2
 
+#opencv读取展示是bgr，matplotlib读取展示是RGB
+
 def BGR_TO_RGB(img):
     b = img[:,:,0].copy()
     g = img[:,:,1].copy()
