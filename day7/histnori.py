@@ -28,7 +28,7 @@ def hist_normalization(img,a = 0,b = 255):
 if __name__ == '__main__':
     img = cv2.imread('imori_dark.jpg').astype(np.float)
     out = hist_normalization(img)
-
+    plt.hist(img.ravel(), bins=255, rwidth=0.8, range=(0, 255))
     plt.hist(out.ravel(),bins=255,rwidth=0.8,range=(0,255))
     plt.savefig('outhist.png')
     plt.show()
