@@ -18,8 +18,8 @@ def interpolate(img,aw,ah):
     y = (y / ah).astype(np.int)
     x = (x / aw).astype(np.int)
 
-    #[0,0,0]，[0,1,1]一维内加一个代表行内加一个，其中第一个数组中代表原图的行，第二个数组代表原图中的列
-    #
+    #[0,0,0]，[0,1,1]一维内加一个代表行内加一个，其中第一个数组中代表原图的行索引，第二个数组代表原图中的列缩影
+    #二维内增加一个，代表增加一个行，
     out = img[y,x].astype(np.uint8)
     out1 = img[y,x].astype(np.uint8)
     print(out)
