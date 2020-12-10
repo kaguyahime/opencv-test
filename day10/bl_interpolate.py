@@ -30,8 +30,10 @@ def interpolate(img,ax,ay):
 
     dx = np.repeat(np.expand_dims(dx, axis=-1), 3, axis=-1)
     dy = np.repeat(np.expand_dims(dy, axis=-1), 3, axis=-1)
-    weight_x = 1-dx
+    weight_x = dx
     weight_y = 1-dy
+
+    test = weight_x*weight_y
 
     out = (1-dx) * (1-dy) * img[iy, ix] + dx * (1 - dy) * img[iy, ix+1] + (1 - dx) * dy * img[iy+1, ix] + dx * dy * img[iy+1, ix+1]
 
