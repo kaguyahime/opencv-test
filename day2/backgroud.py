@@ -26,9 +26,7 @@ fgdModle = np.zeros(SIZE, np.float64)
 rect = (1, 1, img.shape[1], img.shape[0])
 cv2.grabCut(img, mask, rect, bgdModle, fgdModle, 10, cv2.GC_INIT_WITH_RECT)
 mask2 = np.where((mask==1) + (mask==3), 255, 0).astype('uint8')
-cv.imshow("result", mask2)
-cv.waitKey(0)
-cv.destroyAllWindows()
+
 
 
 object = cv.bitwise_and(img, img, mask=mask2)
@@ -36,13 +34,14 @@ object = cv.bitwise_and(img, img, mask=mask2)
 # 高斯模糊
 se = cv.getStructuringElement(cv.MORPH_RECT, (3, 3))
 cv.dilate(mask2, se, mask2)
-mask2 = cv.GaussianBlur(mask2, (5, 5), 0)
+kernel = np.ones((15,15),np.uint8)
+kernel_2 = np.ones((10,10),np.uint8)
+mask2 = cv2.erode(mask2,kernel,iterations = 1)
+mask2 = cv2.dilate(mask2,kernel_2,iterations = 1)
+cv.imshow("result", mask2)
+cv.waitKey(0)
+cv.destroyAllWindows()
 
-contours,hierarch=cv.findContours(mask2,cv.RETR_EXTERNAL,cv.CHAIN_APPROX_NONE)
-for i in range(len(contours)):
-    area = cv.contourArea(contours[i])
-    if area < 10000:
-        cv.drawContours(mask2,[contours[i]],0,0,-1)
 
 # 虚化背景
 background = cv.GaussianBlur(background, (0, 0), 15)
