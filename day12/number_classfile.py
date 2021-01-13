@@ -109,7 +109,7 @@ if __name__ == '__main__':
     font = cv2.FONT_HERSHEY_SIMPLEX
     model = keras.models.load_model('my_model.h5')  # 读取网络
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
-    image_path = "number.png"  # 在这里写入图片路径
+    image_path = "1234.jpg"  # 在这里写入图片路径
 
 
 
